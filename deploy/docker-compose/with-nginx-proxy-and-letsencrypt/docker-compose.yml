@@ -26,21 +26,21 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   memcached:
-    image: memcached
+    image: 947039910131.dkr.ecr.us-east-1.amazonaws.com/yopass:latest
     restart: always
     expose:
       - "11211"
 
   yopass:
-    image: 947039910131.dkr.ecr.us-east-1.amazonaws.com/yopass:port_change
+    image: jhaals/yopass
     restart: always
     environment:
-      - VIRTUAL_HOST=secrets-dev-entrata.io
-      - LETSENCRYPT_HOST=secrets-dev-entrata.io
+      - VIRTUAL_HOST=secrets-dev.entrata.io
+      - LETSENCRYPT_HOST=secrets-dev.entrata.io
       - LETSENCRYPT_EMAIL=mail@yourdomain.tld
-    command: "--memcached=memcached:11211 --port 80"
+    command: "--memcached=memcached:11211 --port 443"
     expose:
-      - "80"
+      - "443"
 
 # yamllint disable rule:empty-values
 volumes:

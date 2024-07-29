@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   memcached:
-    image: memcached
+    image: 947039910131.dkr.ecr.us-east-1.amazonaws.com/yopass:latest
     restart: always
     expose:
       - "11211"
