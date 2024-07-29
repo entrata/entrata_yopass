@@ -26,7 +26,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   memcached:
-    image: memcached
+    image: 947039910131.dkr.ecr.us-east-1.amazonaws.com/yopass:latest
     restart: always
     expose:
       - "11211"
@@ -35,8 +35,8 @@ services:
     image: jhaals/yopass
     restart: always
     environment:
-      - VIRTUAL_HOST=subdomain.yourdomain.tld
-      - LETSENCRYPT_HOST=subdomain.yourdomain.tld
+      - VIRTUAL_HOST=secrets-dev.entrata.io
+      - LETSENCRYPT_HOST=secrets-dev.entrata.io
       - LETSENCRYPT_EMAIL=mail@yourdomain.tld
     command: "--memcached=memcached:11211 --port 80"
     expose:
